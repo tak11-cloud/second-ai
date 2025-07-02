@@ -1,0 +1,123 @@
+{
+  "models": {
+    "mixtral": {
+      "strengths": ["reasoning", "planning", "code_analysis"],
+      "max_context": 32768,
+      "reasoning_depth": "high",
+      "code_quality": 0.85,
+      "speed": 0.6,
+      "memory_usage": 0.8,
+      "security_focus": 0.7,
+      "recommended_for": [
+        "complex reasoning tasks",
+        "strategic planning",
+        "code architecture analysis",
+        "multi-step problem solving"
+      ]
+    },
+    "openchat": {
+      "strengths": ["planning", "reasoning", "documentation"],
+      "max_context": 8192,
+      "reasoning_depth": "medium",
+      "code_quality": 0.7,
+      "speed": 0.8,
+      "memory_usage": 0.5,
+      "security_focus": 0.6,
+      "recommended_for": [
+        "general conversation",
+        "documentation generation",
+        "simple planning tasks"
+      ]
+    },
+    "codellama": {
+      "strengths": ["code_generation", "code_analysis", "debugging"],
+      "max_context": 16384,
+      "reasoning_depth": "medium",
+      "code_quality": 0.9,
+      "speed": 0.7,
+      "memory_usage": 0.6,
+      "security_focus": 0.5,
+      "recommended_for": [
+        "code generation",
+        "code refactoring",
+        "debugging assistance",
+        "code completion"
+      ]
+    },
+    "wizardcoder": {
+      "strengths": ["code_generation", "debugging", "testing"],
+      "max_context": 16384,
+      "reasoning_depth": "medium",
+      "code_quality": 0.85,
+      "speed": 0.75,
+      "memory_usage": 0.6,
+      "security_focus": 0.6,
+      "recommended_for": [
+        "test generation",
+        "code debugging",
+        "algorithm implementation"
+      ]
+    },
+    "phi3": {
+      "strengths": ["reasoning", "search", "documentation"],
+      "max_context": 4096,
+      "reasoning_depth": "low",
+      "code_quality": 0.6,
+      "speed": 0.9,
+      "memory_usage": 0.3,
+      "security_focus": 0.5,
+      "recommended_for": [
+        "quick responses",
+        "simple queries",
+        "fast documentation lookup"
+      ]
+    },
+    "deepseek-coder": {
+      "strengths": ["code_generation", "vulnerability_scan", "exploit_development"],
+      "max_context": 16384,
+      "reasoning_depth": "high",
+      "code_quality": 0.9,
+      "speed": 0.65,
+      "memory_usage": 0.7,
+      "security_focus": 0.9,
+      "recommended_for": [
+        "security code analysis",
+        "vulnerability detection",
+        "exploit development",
+        "security-focused coding"
+      ]
+    }
+  },
+  "routing_rules": {
+    "red_team_tasks": {
+      "primary_models": ["deepseek-coder", "mixtral"],
+      "fallback_models": ["codellama", "wizardcoder"],
+      "min_security_focus": 0.7
+    },
+    "code_generation": {
+      "primary_models": ["codellama", "deepseek-coder", "wizardcoder"],
+      "fallback_models": ["mixtral"],
+      "min_code_quality": 0.8
+    },
+    "planning_tasks": {
+      "primary_models": ["mixtral", "openchat"],
+      "fallback_models": ["phi3"],
+      "min_reasoning_depth": "medium"
+    },
+    "quick_responses": {
+      "primary_models": ["phi3", "openchat"],
+      "fallback_models": ["mixtral"],
+      "max_response_time": 5.0
+    }
+  },
+  "performance_thresholds": {
+    "min_success_rate": 0.7,
+    "max_avg_response_time": 30.0,
+    "min_quality_score": 0.6
+  },
+  "fallback_strategy": {
+    "max_retries": 3,
+    "retry_delay": 2.0,
+    "escalation_models": ["mixtral", "deepseek-coder", "codellama"]
+  }
+}
