@@ -1,0 +1,2 @@
+{"timestamp": "2025-07-02T20:07:16.704138", "level": "INFO", "agent_id": "test_task_123", "agent_type": "test_agent", "action": "task_start", "message": "Starting task: Test task execution", "data": {"task_description": "Test task execution"}, "execution_time": null, "success": true}
+{"timestamp": "2025-07-02T20:07:16.704411", "level": "INFO", "agent_id": "test_task_123", "agent_type": "test_agent", "action": "task_complete", "message": "Task completed successfully", "data": {"result": "{'result': 'success'}"}, "execution_time": 1.5, "success": true}
